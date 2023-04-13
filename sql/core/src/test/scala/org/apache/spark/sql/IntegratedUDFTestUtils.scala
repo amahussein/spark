@@ -306,7 +306,7 @@ object IntegratedUDFTestUtils extends SQLHelper {
         pudf.evalType, pudf.udfDeterministic, pudf.resultId)
     }
 
-    override def toString: String = s"$name(${children.mkString(", ")})"
+    override def toString: String = s"$name#pyUDF(${children.mkString(", ")})"
 
     override protected def withNewChildrenInternal(
         newChildren: IndexedSeq[Expression]): PythonUDFWithoutId = {

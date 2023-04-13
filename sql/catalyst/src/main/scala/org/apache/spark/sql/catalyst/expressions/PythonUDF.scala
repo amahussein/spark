@@ -62,7 +62,8 @@ case class PythonUDF(
 
   override lazy val deterministic: Boolean = udfDeterministic && children.forall(_.deterministic)
 
-  override def toString: String = s"$name(${children.mkString(", ")})#${resultId.id}$typeSuffix"
+  override def toString: String =
+    s"$name#pyUDF(${children.mkString(", ")})#${resultId.id}$typeSuffix"
 
   final override val nodePatterns: Seq[TreePattern] = Seq(PYTHON_UDF)
 
@@ -91,7 +92,7 @@ case class PrettyPythonUDF(
     children: Seq[Expression])
   extends Expression with Unevaluable with NonSQLExpression {
 
-  override def toString: String = s"$name(${children.mkString(", ")})"
+  override def toString: String = s"$name#pyUDF(${children.mkString(", ")})"
 
   override def nullable: Boolean = true
 

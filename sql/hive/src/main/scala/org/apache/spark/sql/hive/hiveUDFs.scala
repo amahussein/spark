@@ -67,7 +67,7 @@ private[hive] case class HiveSimpleUDF(
   }
 
   override def toString: String = {
-    s"$nodeName#${funcWrapper.functionClassName}(${children.mkString(",")})"
+    s"$nodeName#hiveUDAF#${funcWrapper.functionClassName}(${children.mkString(",")})"
   }
 
   override def prettyName: String = name
@@ -138,7 +138,7 @@ private[hive] case class HiveGenericUDF(
   override def prettyName: String = name
 
   override def toString: String = {
-    s"$nodeName#${funcWrapper.functionClassName}(${children.mkString(",")})"
+    s"$nodeName#hiveUDF#${funcWrapper.functionClassName}(${children.mkString(",")})"
   }
 
   override protected def withNewChildrenInternal(newChildren: IndexedSeq[Expression]): Expression =
@@ -263,7 +263,7 @@ private[hive] case class HiveGenericUDTF(
   }
 
   override def toString: String = {
-    s"$nodeName#${funcWrapper.functionClassName}(${children.mkString(",")})"
+    s"$nodeName#hiveUDTF#${funcWrapper.functionClassName}(${children.mkString(",")})"
   }
 
   override def prettyName: String = name
